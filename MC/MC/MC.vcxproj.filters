@@ -308,6 +308,15 @@
     <ClCompile Include="mcSourceProtonRF.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="mcPTGrid3D.cpp">
+      <Filter>Transport</Filter>
+    </ClCompile>
+    <ClCompile Include="mcScorePTGrid3D.cpp">
+      <Filter>Score</Filter>
+    </ClCompile>
+    <ClCompile Include="mcPTBody.cpp">
+      <Filter>Transport</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mcDefs.h" />
@@ -627,6 +636,15 @@
     </ClInclude>
     <ClInclude Include="mcSourceProtonRF.h">
       <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="mcPTGrid3D.h">
+      <Filter>Transport</Filter>
+    </ClInclude>
+    <ClInclude Include="mcScorePTGrid3D.h">
+      <Filter>Score</Filter>
+    </ClInclude>
+    <ClInclude Include="mcPTBody.h">
+      <Filter>Transport</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

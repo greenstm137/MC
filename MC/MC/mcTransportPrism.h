@@ -14,9 +14,14 @@ public:
 	mcTransportPrism(void);
 	mcTransportPrism(const geomVector3D& orgn, const geomVector3D& vz, const geomVector3D& vx,
 		double ax, double ay, double az);
+	mcTransportPrism(const geomVector3D& orgn, const geomVector3D& vz, const geomVector3D& vx);
 	virtual ~mcTransportPrism(void);
 
 	void setGeometry(double ax, double ay, double az);
+
+	// Установка в новой геометрии, более подходящей для параллелепипеда, содержащего пациента.
+	void setGeometry(double ax, double ay, double az, double x0, double y0, double z0);
+
 	double ax() const { return ax_; }
 	double ay() const { return ay_; }
 	double az() const { return az_; }
@@ -34,4 +39,10 @@ protected:
 	double ax_;
 	double ay_;
 	double az_;
+
+	// Координаты нулевого угла в собственной системе относительно точки, на которую указывает orgn
+	double x0_, y0_, z0_;
+
+	// Смещение между старым и новым взглядом для ускорения расчетов
+	double dx0_, dy0_, dz0_;
 };

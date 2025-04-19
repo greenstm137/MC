@@ -191,6 +191,8 @@
     <ClInclude Include="mcPhysicsPositron.h" />
     <ClInclude Include="mcPhysicsProton.h" />
     <ClInclude Include="mcPStar.h" />
+    <ClInclude Include="mcPTBody.h" />
+    <ClInclude Include="mcPTGrid3D.h" />
     <ClInclude Include="mcPTLasVegas.h" />
     <ClInclude Include="mcPTQc3.h" />
     <ClInclude Include="mcRegionReference.h" />
@@ -214,6 +216,7 @@
     <ClInclude Include="mcScorePhaseSpaceConcentrator.h" />
     <ClInclude Include="mcScorePhaseSpaceDirect.h" />
     <ClInclude Include="mcScorePHSP.h" />
+    <ClInclude Include="mcScorePTGrid3D.h" />
     <ClInclude Include="mcScoreSpectraFluence.h" />
     <ClInclude Include="mcScoreSpectraFluenceSphere.h" />
     <ClInclude Include="mcScoreSphereFluence.h" />
@@ -302,6 +305,8 @@
     <ClCompile Include="mcPhysicsPositron.cpp" />
     <ClCompile Include="mcPhysicsProton.cpp" />
     <ClCompile Include="mcPStar.cpp" />
+    <ClCompile Include="mcPTBody.cpp" />
+    <ClCompile Include="mcPTGrid3D.cpp" />
     <ClCompile Include="mcPTLasVegas.cpp" />
     <ClCompile Include="mcPTQc3.cpp" />
     <ClCompile Include="mcRegionReference.cpp" />
@@ -325,6 +330,7 @@
     <ClCompile Include="mcScorePhaseSpaceConcentrator.cpp" />
     <ClCompile Include="mcScorePhaseSpaceDirect.cpp" />
     <ClCompile Include="mcScorePHSP.cpp" />
+    <ClCompile Include="mcScorePTGrid3D.cpp" />
     <ClCompile Include="mcScoreSpectraFluence.cpp" />
     <ClCompile Include="mcScoreSpectraFluenceSphere.cpp" />
     <ClCompile Include="mcScoreSphereFluence.cpp" />

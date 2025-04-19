@@ -28,6 +28,8 @@
 #include "../../mc/mc/mcTransportLinearChain.h"
 #include "../../mc/mc/mcTransportGridFilter.h"
 #include "../../mc/mc/mcTransportMantleBlock.h"
+#include "../../mc/mc/mcPTGrid3D.h"
+#include "../../mc/mc/mcPTBody.h"
 
 #include "../../mc/mc/mcScorePHSP.h"
 #include "../../mc/mc/mcScoreBeamFluence.h"
@@ -63,6 +65,7 @@
 #include "../../mc/mc/mcSourceProtonRF.h"
 
 #include "../../mc/mc/mcMedia.h"
+#include "../../MC/MC/mcMedium.h"
 
 #include <io.h>
 #include <fcntl.h>
@@ -368,6 +371,7 @@ mcTransport* GeometryParser::ParseTransport(const XPRNode& geometry, const mcMed
 	geomVector3D xaxis(xx, xy, xz);
 	normal.normalize();
 	xaxis.normalize();
+	auto body = std::make_unique<mcPTBody>();
 
 	if (_wcsicmp(geomType.c_str(), L"cylinder") == 0)
 	{
@@ -570,6 +574,23 @@ mcTransport* GeometryParser::ParseTransport(const XPRNode& geometry, const mcMed
 	else if (_wcsicmp(geomType.c_str(), L"mantle_block") == 0)
 	{
 		t = new mcTransportMantleBlock(origin, normal, xaxis, r1, height, poly_x, poly_y);
+	}
+	else if (_wcsicmp(geomType.c_str(), L"voxel_water_phantom") == 0)
+	{
+		body->SetGrid(nx, ny, nz, x0, y0, z0, psx, psy, psz);
+		unsigned short _id = media->getMediumIdx("H2O700ICRU");		
+		std::vector<double> densities(1, media->getMedium(MCP_PHOTON, _id)->density_);
+		body->SetDefaultDencities(densities);
+		unsigned int n = nx * ny * nz;
+		unsigned short* pIdxOut = &(body->GetMediaIndexes()[0]);
+		double* pDensOut = &(body->GetDensities()[0]);
+
+		for (unsigned i = 0; i < n; i++, pIdxOut++, pDensOut++)
+		{
+			*pDensOut = 1.0;
+			*pIdxOut = _id;
+		}
+		t = new mcPTGrid3D(origin, normal, xaxis, *body, nThreads);
 	}
 
 	if (t == nullptr)

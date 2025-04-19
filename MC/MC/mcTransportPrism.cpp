@@ -14,6 +14,11 @@ mcTransportPrism::mcTransportPrism(const geomVector3D& orgn, const geomVector3D&
 	setGeometry(ax, ay, az);
 }
 
+mcTransportPrism::mcTransportPrism(const geomVector3D& orgn, const geomVector3D& vz, const geomVector3D& vx)
+	:mcTransport(orgn, vz, vx)
+{
+}
+
 mcTransportPrism::~mcTransportPrism(void)
 {
 }
@@ -23,6 +28,19 @@ void mcTransportPrism::setGeometry(double ax, double ay, double az)
 	ax_ = ax;
 	ay_ = ay;
 	az_ = az;
+}
+
+void mcTransportPrism::setGeometry(double ax, double ay, double az, double x0, double y0, double z0)
+{
+	ax_ = ax;
+	ay_ = ay;
+	az_ = az;
+	x0_ = x0;
+	y0_ = y0;
+	z0_ = z0;
+	dx0_ = -x0 - ax / 2;
+	dy0_ = -y0 - ay / 2;
+	dz0_ = -z0;
 }
 
 double mcTransportPrism::getDistanceInside(mcParticle& p) const
